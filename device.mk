@@ -30,7 +30,7 @@ LOCAL_PATH := device/xiaomi/ares
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # API
-PRODUCT_SHIPPING_API_LEVEL := 30
+PRODUCT_SHIPPING_API_LEVEL := 31
 
 # A/B
 PRODUCT_PACKAGES += \
@@ -65,6 +65,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-service \
     android.hardware.health@2.1-impl
+
+# Additional Target Libraries
+TARGET_RECOVERY_DEVICE_MODULES += \
+    android.hardware.keymaster@4.0
+
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@4.0
+
+TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
+    $(TARGET_OUT_SHARED_LIBRARIES)/android.hardware.keymaster@4.0.so
+
+# Keystore2
+PRODUCT_PACKAGES += \
+    android.system.keystore2
 
 # Gatekeeper
 PRODUCT_PACKAGES += \
